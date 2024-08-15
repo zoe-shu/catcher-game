@@ -1,0 +1,36 @@
+.leaderboard-section {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url('../../assets/game/bg2.png');
+  text-align: center;
+  padding: 10%;
+
+  &.no-bg {
+    background: none;
+    height: auto;
+    min-height: auto;
+    padding: 5%;
+  }
+
+  .row {
+    margin: 6px auto;
+  }
+
+  .board-container {
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .rank-title-row {
+    border-bottom: 1px solid white;
+    margin-bottom: 1rem;
+  }
+  .rank-title{
+    font-weight: bold;
+    font-size: large;
+  }
+
+  .name-col {
+    word-break: break-all;
+  }
+}

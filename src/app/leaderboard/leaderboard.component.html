@@ -1,1 +1,28 @@
-<p>leaderboard works!</p>
+<div class="leaderboard-section" [class]="{'no-bg': isRequestFetchData}">
+  <ng-container *ngIf="rankingList.length > 0">
+    <div class="board-container text-white">
+        <div class="row rank-title-row">
+          <div class="col-3 col-sm-2 rank-title">Rank</div>
+          <div class="col-2 rank-title">Scores</div>
+          <div class="col rank-title">Name</div>
+        </div>
+        <div class="row" *ngFor="let record of rankingList; let r = index">
+          <div class="col-2">{{ r + 1 }}</div>
+          <div class="col-2">{{ record.scores }}</div>
+          <div class="col">{{ record.name }}</div>
+        </div>
+    </div>
+    
+  </ng-container>
+
+  <ng-container *ngIf="rankingList.length == 0">
+    No Records
+  </ng-container>
+
+  <div class="pt-2">
+    <a href="/" class="btn custom-btn">
+      Home
+    </a>
+  </div>
+</div>
+
