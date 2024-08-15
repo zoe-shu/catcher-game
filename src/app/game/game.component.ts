@@ -45,8 +45,8 @@ export class GameComponent {
   }
 
   @HostListener('document:mousemove', ['$event'])
-  onMousemove($event) {    
-    if($event.clientX < this.catcherAreaWidth && $event.clientX > 0){
+  onMousemove($event) {
+    if($event.clientX < this.catcherAreaWidth && $event.clientX > 0 && $event.clientY > this.catcherAreaTop){
       //limit catcher can move to left or right only
       this.catcher.style.left = $event.clientX + 'px';
     }
