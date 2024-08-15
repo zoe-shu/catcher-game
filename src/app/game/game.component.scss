@@ -1,0 +1,129 @@
+$dropDuration: 4000ms;
+
+.game-section {
+  background-image: url('../../assets/game/bg1.png');
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+
+  &.playing {
+    // cursor: none;
+  }
+
+  .toolbar {
+    background-color: white;
+    text-align: center;
+  }
+
+  .prestart-timer{
+    position: absolute;
+    left: 50%;
+    top:50%;
+    font-size: 11rem;
+    font-weight: bold;
+    color: red;
+    text-shadow: 0.5px 0.5px 0px #989898;
+    transform: translate(-50%, -50%);
+  }
+
+  .items-area {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .game-item{
+    width: 150px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 100;
+
+    &.hide {
+      opacity: 0 !important;
+    }
+
+    &.move {
+      top: 100vh;
+      transition: top linear $dropDuration;
+    }
+  }
+
+  .catcher-area {
+    display: block;
+    width: 100%;
+    height: 30%;
+    position: relative;
+    align-self: end;
+
+    .catcher{
+      position: absolute;
+      display: block;
+      width: 150px;
+      top:0;
+      left:0;
+      z-index: 9;
+    }
+  }
+
+  .name-input-container, .ranking-container{
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background: url(../../assets/game/bg2.png);
+    align-content: center;
+    text-align: center;
+    z-index: 99;
+
+    &.show{
+      display: block;
+    }
+  }
+
+  .name-input-container {
+    .input-container {
+      background: rgba(0, 0, 0, 0.4);
+      width: 80%;
+      height: 80%;
+      display: flex;
+      margin: 0 auto;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .player-name-input{
+      height: 40px;
+      font-size: x-large;
+      text-align: center;
+      appearance: none;
+      background: transparent;
+      outline: none;
+      box-shadow: none;
+      border: none;
+      border-bottom: 2px solid white;
+      color: white;
+
+      &::placeholder {
+        color: rgba(255,255,255,0.7);
+        opacity: 1; /* Firefox */
+      }
+    }
+    .result-scores{
+      color: red;
+      text-shadow: 0.5px 0.5px 0px #989898;
+      font-size: xxx-large;
+    }
+  }
+  
+  .ranking-container {
+    max-width: 1400px;
+  }
+}

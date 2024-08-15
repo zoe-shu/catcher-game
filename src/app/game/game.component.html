@@ -1,1 +1,67 @@
-<p>game works!</p>
+<div class="game-section" [class]="{'playing':isGameStarted}">
+
+  <div class="toolbar row">
+    <div class="col">Scores: {{scores}}</div>
+    <div class="col">Time: {{gameTime}}s left</div>
+  </div>
+
+  <div id="prestart-timer" class="prestart-timer" [class.d-none]="isGameStarted">
+    {{preStart}}
+  </div>
+
+  <div class="items-area">
+    
+    <div id="catcher-area" class="catcher-area">
+      <img id="catcher" class="catcher" src="/assets/game/boat.png" alt="catcher">
+    </div>
+
+    <img id="e1" class="game-item e1" src="/assets/game/e1.png" 
+      (click)="onCatchItems('e1')"  (mouseover)="onCatchItems('e1')"
+      [class]="{ 'hide': itemList.e1.hide, 'move': itemList.e1.move }"
+      [style]="{ 'left': itemList.e1.left }"
+    >
+    <img id="e2" class="game-item e2" src="/assets/game/e2.png" 
+      (click)="onCatchItems('e2')"  (mouseover)="onCatchItems('e2')"
+      [class]="{ 'hide': itemList.e2.hide, 'move': itemList.e2.move }"
+      [style]="{ 'left': itemList.e2.left }"
+    >
+    <img id="p1" class="game-item p1" src="/assets/game/p1.png" 
+      (click)="onCatchItems('p1')"  (mouseover)="onCatchItems('p1')"
+      [class]="{ 'hide': itemList.p1.hide, 'move': itemList.p1.move }"
+      [style]="{ 'left': itemList.p1.left }"
+    >
+    <img id="p2" class="game-item p2" src="/assets/game/p2.png" 
+      (click)="onCatchItems('p2')"  (mouseover)="onCatchItems('p2')"
+      [class]="{ 'hide': itemList.p2.hide, 'move': itemList.p2.move }"
+      [style]="{ 'left': itemList.p2.left }"
+    >
+    <img id="p3" class="game-item p3" src="/assets/game/p3.png" 
+      (click)="onCatchItems('p3')" (mouseover)="onCatchItems('p3')"
+      [class]="{ 'hide': itemList.p3.hide, 'move': itemList.p3.move }"
+      [style]="{ 'left': itemList.p3.left }"
+    > 
+    <img id="p4" class="game-item p4" src="/assets/game/p4.png" 
+      (click)="onCatchItems('p4')" (mouseover)="onCatchItems('p4')"
+      [class]="{ 'hide': itemList.p4.hide, 'move': itemList.p4.move }"
+      [style]="{ 'left': itemList.p4.left }"
+    >
+  </div>
+
+  <div class="name-input-container" [class.show]="isGameEnded">
+    <div class="input-container">
+      <div class="result-scores">{{scores}}</div>
+      <input class="d-inline-block mb-5 player-name-input" id="playerName" type="text" 
+      [(ngModel)]="nameInput" placeholder="Your Name" />
+      <div>
+        <button class="btn custom-btn" (click)="onSubmitRecord()">Submit</button>  
+      </div>
+    </div>
+  </div>
+
+  <div class="ranking-container" [class.show]="isShowRanking">
+    <div class="d-inline-block text-white w-100">
+      <app-leaderboard [limit]="10" [isRequestFetchData]="onRequestFetchData"></app-leaderboard>
+    </div>
+  </div>
+
+</div>
