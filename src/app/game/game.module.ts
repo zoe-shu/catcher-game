@@ -8,7 +8,7 @@ import { AngularFireModule, FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
-import { environment } from 'src/environment';
+import { environment } from 'src/env';
 import { FormsModule } from '@angular/forms';
 import { LeaderboardComponent } from '../leaderboard/leaderboard.component';
 import { LeaderboardModule } from '../leaderboard/leaderboard.module';
