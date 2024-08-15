@@ -21,6 +21,7 @@ export class GameComponent {
 
   isGameStarted: boolean = false;
   isGameEnded: boolean = false;
+  isShowInput: boolean = false;
   isShowRanking: boolean = false;
   onRequestFetchData:boolean = false;
 
@@ -69,6 +70,9 @@ export class GameComponent {
   onGameEnded(){
     this.isGameStarted = false;
     this.isGameEnded = true;
+    setTimeout(() => {
+      this.isShowInput = true;
+    }, 1000);
     for (let i in this.itemList){
       this.onResetDropItems(i);
     }
@@ -153,6 +157,7 @@ export class GameComponent {
     this.recordService.addRecord({'scores': this.scores, 'name': this.nameInput}).then(() => {
       this.isShowRanking = true;
       this.isGameEnded = false;
+      this.isShowInput = false;
       this.onRequestFetchData = true; //get updated top 10 leaderboard
     });
   }
