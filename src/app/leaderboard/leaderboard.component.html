@@ -6,11 +6,14 @@
           <div class="col-2 rank-title">Scores</div>
           <div class="col rank-title">Name</div>
         </div>
-        <div class="row" *ngFor="let record of rankingList; let r = index">
+        <div class="records-wrap">
+          <div class="row" *ngFor="let record of rankingList; let r = index">
           <div class="col-2">{{ r + 1 }}</div>
           <div class="col-2">{{ record.scores }}</div>
           <div class="col">{{ record.name }}</div>
         </div>
+        </div>
+        
     </div>
     
   </ng-container>

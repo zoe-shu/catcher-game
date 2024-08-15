@@ -13,6 +13,7 @@
 
     .board-container {
       max-height: none;
+      height: auto;
     }
   }
 
@@ -23,7 +24,12 @@
   .board-container {
     padding: 10px;
     background: rgba(0, 0, 0, 0.4);
-    max-height: 80vh;
+    height: 70vh;
+    // overflow-y: scroll;
+  }
+
+  .records-wrap{
+    max-height: calc(100% - 40px);
     overflow-y: scroll;
   }
 
