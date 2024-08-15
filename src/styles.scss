@@ -1,1 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
+
+.btn:focus {
+  box-shadow: none;
+}
+
+.custom-btn{
+  display: inline-block;
+  padding: 8px 12px;
+  text-align: center;
+  background: white;
+  box-shadow: 3px 3px 1px #505050;
+  border: 2px solid white;
+  margin: 0 3px 20px -3px;
+  border-radius: 6px;
+  font-size: 28px;
+  font-family: 'VT323';
+  line-height: 20px;
+  background-color: white;
+
+  &:hover{
+    outline: none;
+    box-shadow: none;
+    margin: 3px 0 17px 0;
+    color: white;
+    border: 2px solid white;
+    background-color: transparent;
+  }
+  &:focus{
+    outline: none;
+    box-shadow: 3px 3px 1px #505050;
+    &:hover{
+      box-shadow: none;
+    }
+  }
+  &:active, &:first-child:active {
+    color: white;
+    outline: none;
+    box-shadow: none;
+    margin: 3px 0 17px 0;
+  }
+  &:disabled{
+    outline: none;
+    margin-left: 3px;
+    margin-top: 3px;
+    box-shadow: none;
+    margin-bottom: 17px;
+  }
+}
