@@ -26,50 +26,6 @@ export class GameComponent {
 
   scores: number = 0;
 
-  itemList = {
-    'e1': {
-      'catched': false,
-      'points': 50,
-      'left': '90%',
-      'hide': true,
-      'move': false,
-    },
-    'e2': {
-      'catched': false,
-      'points': 50,
-      'left': '5%',
-      'hide': true,
-      'move': false,
-    },
-    'p1': {
-      'catched': false,
-      'points': 50,
-      'left': '60%',
-      'hide': true,
-      'move': false,
-    },
-    'p2': {
-      'catched': false,
-      'points': 50,
-      'left': '30%',
-      'hide': true,
-      'move': false,
-    },
-    'p3': {
-      'catched': false,
-      'points': 50,
-      'left': '40%',
-      'hide': true,
-      'move': false,
-    },
-    'p4': {
-      'catched': false,
-      'points': 50,
-      'left': '45%',
-      'hide': true,
-      'move': false,
-    }
-  };
 
   constructor(private recordService: RecordService) {
   }
@@ -142,10 +98,10 @@ export class GameComponent {
     for(let i = 1; i <= count; i++){ 
       setTimeout(() => {
         let itemIds = Object.keys(this.itemList);
-        let randomItem:any = Math.round(itemIds.length * Math.random() << 0); //pick random item
-        randomItem = itemIds[randomItem];
+        let randomItem:any;
+        
         do{
-          randomItem = Math.round(itemIds.length * Math.random() << 0);
+          randomItem = Math.round(itemIds.length * Math.random() << 0); //pick random item
           randomItem = itemIds[randomItem];
         } while(this.itemList[randomItem].move) //prevent on-screen item was picked
 
@@ -166,7 +122,6 @@ export class GameComponent {
     this.itemList[item].catched = false;
     this.itemList[item].move = false;
     this.itemList[item].hide = true;
-    
     let randomXaxis = Math.floor(Math.random() * 91) + '%'; // left: 0-90%
     this.itemList[item].left = randomXaxis;
   }
@@ -175,9 +130,9 @@ export class GameComponent {
     this.itemList[item].hide = false;
     this.itemList[item].move = true;
 
-    setTimeout(() => {
+    this.itemList[item].timeoutID = setTimeout(() => {
       this.onResetDropItems(item); //reset item after move finished
-    }, this.dropDuration + 100);
+    }, this.dropDuration);
   }
 
   onCatchItems(item){ //while item was clicked or hovered
@@ -188,10 +143,9 @@ export class GameComponent {
     if(!this.itemList[item].catched && this.isGameStarted && itemBottom >= this.catcherAreaTop ){
       this.scores += this.itemList[item].points;
       this.itemList[item].catched = true;
-      this.itemList[item].hide = true;
-      setTimeout(() => {
-        this.onResetDropItems(item);
-      }, 100);
+      clearTimeout(this.itemList[item].timeoutID);
+      this.itemList[item].timeoutI = undefined;
+      this.onResetDropItems(item);
     }
   }
 
@@ -203,4 +157,55 @@ export class GameComponent {
     });
   }
 
+
+  itemList = {
+    'e1': {
+      'catched': false,
+      'points': 50,
+      'left': '90%',
+      'hide': true,
+      'move': false,
+      'timeoutID': undefined,
+    },
+    'e2': {
+      'catched': false,
+      'points': 50,
+      'left': '5%',
+      'hide': true,
+      'move': false,
+      'timeoutID': undefined,
+    },
+    'p1': {
+      'catched': false,
+      'points': 50,
+      'left': '60%',
+      'hide': true,
+      'move': false,
+      'timeoutID': undefined,
+    },
+    'p2': {
+      'catched': false,
+      'points': 50,
+      'left': '30%',
+      'hide': true,
+      'move': false,
+      'timeoutID': undefined,
+    },
+    'p3': {
+      'catched': false,
+      'points': 50,
+      'left': '40%',
+      'hide': true,
+      'move': false,
+      'timeoutID': undefined,
+    },
+    'p4': {
+      'catched': false,
+      'points': 50,
+      'left': '45%',
+      'hide': true,
+      'move': false,
+      'timeoutID': undefined,
+    },
+  };
 }
