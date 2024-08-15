@@ -11,12 +11,13 @@ $dropDuration: 4000ms;
   user-select: none;
 
   &.playing {
-    // cursor: none;
+    cursor: grab;
   }
 
   .toolbar {
     background-color: white;
     text-align: center;
+    font-size: large;
   }
 
   .prestart-timer{
