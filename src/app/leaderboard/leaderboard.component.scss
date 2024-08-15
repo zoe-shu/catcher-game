@@ -10,6 +10,10 @@
     height: auto;
     min-height: auto;
     padding: 5%;
+
+    .board-container {
+      max-height: none;
+    }
   }
 
   .row {
@@ -19,6 +23,8 @@
   .board-container {
     padding: 10px;
     background: rgba(0, 0, 0, 0.4);
+    max-height: 80vh;
+    overflow-y: scroll;
   }
 
   .rank-title-row {
