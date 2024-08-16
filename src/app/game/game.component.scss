@@ -38,7 +38,7 @@ $dropDuration: 4000ms;
   }
 
   .game-item{
-    width: 150px;
+    width: 100px;
     position: absolute;
     top: 0;
     left: 0;
@@ -126,5 +126,45 @@ $dropDuration: 4000ms;
   
   .ranking-container {
     max-width: 1400px;
+  }
+}
+
+@media (min-width: 2400px) {
+  .game-section .catcher-area .catcher {
+    width: 250px;
+  }
+
+  .game-section .game-item {
+    width: 200px;
+  }
+}
+
+@media  (min-width: 1600px) and (max-width: 2399px) {
+  .game-section .catcher-area .catcher {
+    width: 200px;
+  }
+
+  .game-section .game-item {
+    width: 150px;
+  }
+}
+
+@media (max-width: 767px) {
+    .game-section .catcher-area .catcher {
+      width: 100px;
+  }
+
+  .game-section .game-item {
+    width: 70px;
+  }
+}
+
+@media (max-width: 375px) {
+  .game-section .catcher-area .catcher {
+    width: 70px;
+  }
+
+  .game-section .game-item {
+    width: 50px;
   }
 }
