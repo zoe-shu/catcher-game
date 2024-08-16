@@ -25,7 +25,8 @@ export class GameComponent {
   isGameEnded: boolean = false;
   isShowInput: boolean = false;
   isShowRanking: boolean = false;
-  onRequestFetchData:boolean = false;
+  onRequestFetchData: boolean = false;
+  isDisabledSubmit: boolean = false;
 
   constructor(
     private recordService: RecordService
@@ -176,7 +177,9 @@ export class GameComponent {
   }
 
   onSubmitRecord(){
+    this.isDisabledSubmit = true;
     this.recordService.addRecord({'scores': this.scores, 'name': this.nameInput}).then(() => {
+      this.isDisabledSubmit = false;
       this.isShowRanking = true;
       this.isGameEnded = false;
       this.isShowInput = false;

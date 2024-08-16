@@ -31,7 +31,7 @@
       <input class="d-inline-block mb-5 player-name-input" id="playerName" type="text" 
       [(ngModel)]="nameInput" placeholder="Your Name" />
       <div>
-        <button class="btn custom-btn" (click)="onSubmitRecord()">Submit</button>  
+        <button class="btn custom-btn" (click)="onSubmitRecord()" [class.disabled]="isDisabledSubmit">Submit</button>  
       </div>
     </div>
   </div>
