@@ -1,3 +1,13 @@
+:root {
+  --doc-height: 100%;
+ }
+
+ .home-section, 
+ .game-section, 
+ .leaderboard-section {
+ height: 100vh; /* fallback for Js load */
+ height: var(--doc-height);
+}
 
 .btn:focus {
   box-shadow: none;
@@ -45,4 +55,11 @@
     box-shadow: none;
     margin-bottom: 17px;
   }
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+html.desktop .game-section .catcher-area .catcher {
+  transform: none !important;
 }
