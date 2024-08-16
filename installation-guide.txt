@@ -1,0 +1,15 @@
+#Installation Guide
+1. git pull https://github.com/zoe-shu/catcher-game.git
+2. add env.ts to ./src
+3. npm i
+4. ng serve
+5. Navigate to http://localhost:4200/
+5.1. Can be downloaded as web app, please follow the instructions from Chrome:
+  https://support.google.com/chrome/answer/9658361?hl=en&co=GENIE.Platform%3DDesktop
+
+OR 
+Navigate to https://catcher-game-cf1a5.web.app/ 
+
+#Environment
+- Angular v16
+- Node v20.5

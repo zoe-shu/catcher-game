@@ -1,0 +1,21 @@
+API Description:
+1.
+File: rankingService
+Method: getRanking(limit)
+API: this.firestore.collection('records', ref => ref.orderBy('scores', 'desc').limit(limit))
+Description: This is for getting the top 100 high scores records from Database.
+  The query will get 100 records from Database "records", sorted by 'scores' in descending order.
+
+2.
+File: rankingService
+Method: getUpdates(limit)
+API: this.firestore.collection('records', ref => ref.orderBy('scores', 'desc').limit(limit)).valueChanges();
+Description:  This is for listening to a new record from the database, users can see the updated leaderboard without refreshing the page.
+  The query includes the event listener, event is raised every time data is changed, and will get 100 records from Database "records", sorted by 'scores' in descending order.
+
+3.
+File: recordService
+Method: addRecord(recordInfo)
+API: this.firestore.collection('records').add(recordInfo).then(() => 'success').catch(err => err);
+Description: This is for adding a record to the "records" table, after the user finished the game and submitted their name.
+  The query will send out the user's name and scores to the database, the id will be generated automatically.
