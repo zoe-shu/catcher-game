@@ -4,8 +4,6 @@ $dropDuration: 4000ms;
   background-image: url('../../assets/game/bg1.png');
   background-size: cover;
   width: 100%;
-  height: 100vh;
-  max-height: 100vh;
   overflow: hidden;
   position: relative;
   user-select: none;
@@ -130,41 +128,48 @@ $dropDuration: 4000ms;
 }
 
 @media (min-width: 2400px) {
-  .game-section .catcher-area .catcher {
-    width: 250px;
-  }
-
-  .game-section .game-item {
-    width: 200px;
+  .game-section {
+    .catcher-area .catcher {
+      width: 250px;
+    }
+    .game-item {
+      width: 200px;
+    }
   }
 }
 
 @media  (min-width: 1600px) and (max-width: 2399px) {
-  .game-section .catcher-area .catcher {
-    width: 200px;
-  }
-
-  .game-section .game-item {
-    width: 150px;
+  .game-section {
+    .catcher-area .catcher {
+      width: 200px;
+    }
+    .game-item {
+      width: 150px;
+    }
   }
 }
 
 @media (max-width: 767px) {
-    .game-section .catcher-area .catcher {
+  .game-section {
+    .catcher-area .catcher {
       width: 100px;
-  }
-
-  .game-section .game-item {
-    width: 70px;
+    }
+    .game-item {
+      width: 70px;
+    }
   }
 }
 
 @media (max-width: 375px) {
-  .game-section .catcher-area .catcher {
-    width: 70px;
-  }
-
-  .game-section .game-item {
-    width: 50px;
+  .game-section {
+    .catcher-area .catcher {
+      width: 70px;
+    }
+    .game-item {
+      width: 50px;
+    }
+    .prestart-timer{
+      font-size: 8rem;
+    }
   }
 }

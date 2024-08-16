@@ -4,11 +4,12 @@ import { RecordService } from '../services/record.service';
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.scss']
+  styleUrls: ['./game.component.scss'],
 })
 export class GameComponent {
 
   nameInput: string = '';
+  scores: number = 0;
 
   catcher: any;
   catcherAreaWidth: number;
@@ -19,19 +20,19 @@ export class GameComponent {
   preStart: any = 3;
   dropDuration: number = 4000;
 
+  isMobile: boolean = false;
   isGameStarted: boolean = false;
   isGameEnded: boolean = false;
   isShowInput: boolean = false;
   isShowRanking: boolean = false;
   onRequestFetchData:boolean = false;
 
-  scores: number = 0;
-
-
-  constructor(private recordService: RecordService) {
-  }
+  constructor(
+    private recordService: RecordService
+  ) {}
 
   ngOnInit() {
+    this.isMobileDevice();
     this.catcher = document.getElementById('catcher');
     this.catcherAreaTop = document.getElementById('catcher-area')?.offsetTop;
     this.catcherAreaWidth = window.innerWidth;
@@ -40,6 +41,7 @@ export class GameComponent {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
+    this.isMobileDevice();
     this.catcherAreaTop = document.getElementById('catcher-area')?.offsetTop;
     this.catcherAreaWidth = window.innerWidth;
     this.catcher.style.left = '0px';
@@ -47,9 +49,31 @@ export class GameComponent {
 
   @HostListener('document:mousemove', ['$event'])
   onMousemove($event) {
-    if($event.clientX < this.catcherAreaWidth && $event.clientX > 0 && $event.clientY > this.catcherAreaTop){
-      //limit catcher can move to left or right only
-      this.catcher.style.left = $event.clientX + 'px';
+    if(!this.isMobile){
+      if($event.clientX < this.catcherAreaWidth && $event.clientX > 0 && $event.clientY > this.catcherAreaTop){
+        //limit catcher can move to left or right only
+        this.catcher.style.left = $event.clientX + 'px';
+      }
+  
+      if(this.catcher.style.left > this.catcherAreaWidth || this.catcher.style.left < 0){
+        this.catcher.style.left = 0;
+      }
+    }
+  }
+
+  isMobileDevice() {
+    // Check if mobile
+    const root = document.getElementsByTagName('html')[0];
+    if("ontouchstart" in window ||
+      navigator.maxTouchPoints > 0 ||
+      navigator.maxTouchPoints > 0){
+      root.classList.add('mobile');
+      root.classList.remove('desktop');
+      this.isMobile = true;
+    }else {
+      root.classList.remove('mobile');
+      root.classList.add('desktop');
+      this.isMobile = false;
     }
   }
 
@@ -82,13 +106,11 @@ export class GameComponent {
     this.onResetTimer();
     let count = this.preStart;
 
-    for(let i = 1; i <= count; i++){
+    for(let i = 1; i < count; i++){
       setTimeout(() => {
         this.preStart--; //count 3,2,1 before start
-
         if(this.preStart == 1){
           setTimeout(() => {
-            this.preStart = 'START';
             this.onCountPlayingTime();
           }, 1000);
         }
