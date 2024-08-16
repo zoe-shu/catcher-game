@@ -10,8 +10,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { environment } from 'src/env';
 import { FormsModule } from '@angular/forms';
-import { LeaderboardComponent } from '../leaderboard/leaderboard.component';
 import { LeaderboardModule } from '../leaderboard/leaderboard.module';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -26,6 +26,7 @@ import { LeaderboardModule } from '../leaderboard/leaderboard.module';
     AngularFirestoreModule,
     FormsModule,
     LeaderboardModule,
+    DragDropModule,
   ],
   providers: [
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
